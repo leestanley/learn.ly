@@ -67,16 +67,16 @@ const createLiveStream = async () => {
 // creates a new one, saving the new live stream to our state file and global
 // STREAM variable.
 const initialize = async () => {
-  try {
-    const stateFile = await readFile(stateFilePath, 'utf8');
-    STREAM = JSON.parse(stateFile);
-    console.log('Found an existing stream! Fetching updated data.');
-    STREAM = await Video.LiveStreams.get(STREAM.id);
-  } catch (err) {
+  //try {
+  //  const stateFile = await readFile(stateFilePath, 'utf8');
+  //  STREAM = JSON.parse(stateFile);
+//    console.log('Found an existing stream! Fetching updated data.');
+//    STREAM = await Video.LiveStreams.get(STREAM.id);
+//  } catch (err) {
     console.log('No stream found, creating a new one.');
     STREAM = await createLiveStream();
     await writeFile(stateFilePath, JSON.stringify(STREAM));
-  }
+//  }
   return STREAM;
 }
 

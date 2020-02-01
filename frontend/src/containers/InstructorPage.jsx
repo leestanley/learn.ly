@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-import VideoPlayer from '../components/VideoPlayer';
+import InstructorPage from '../components/InstructorPage';
 
-const InstructorPage = () => {
+const InstructorPageContainer = props => {
   return (
-    <VideoPlayer
-      muted={true}
-      playbackId={''}
-      status={'ready'}
-      />
+    <InstructorPage currStream={props.currStream}/>
   );
 };
 
-export default InstructorPage;
+const mapStateToProps = state => ({
+  currStream: state.stream.currStream,
+});
+
+export default connect(
+  mapStateToProps,
+  { }
+)(InstructorPageContainer);

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { withFormik } from 'formik';
 
 import IBeginForm from '../components/IBeginForm';
-import { createLiveStream } from '../actions/createLiveStream.js';
+import { createLiveStream } from '../actions/streamActions.js';
 
 const FormikIBeginForm = withFormik({
 mapPropsToValues() {
