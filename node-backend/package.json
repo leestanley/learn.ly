@@ -2,5 +2,11 @@
   "name": "node-backend",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@mux/mux-node": "^2.6.0",
+    "basic-auth": "^2.0.1",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
 }
