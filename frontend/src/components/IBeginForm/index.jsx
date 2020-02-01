@@ -26,8 +26,9 @@ const IBeginForm = (props) => {
          <Form.Item>
            <div>
              <Radio.Group className="radio"
-               onChange={language=> props.setFieldValue('language', language.target.value)}
-               defaultValue="English">
+               name="language"
+               onChange={language=> {props.setFieldValue('language', language.target.value)}}
+               >
                <Radio.Button className="radio-button" value="English">English</Radio.Button>
                <Radio.Button className="radio-button" value="Italian">Italian</Radio.Button>
                <Radio.Button className="radio-button" value="Chinese">Chinese</Radio.Button>
