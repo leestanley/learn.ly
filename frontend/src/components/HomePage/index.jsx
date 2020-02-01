@@ -11,7 +11,7 @@ const HomePage = () => {
   return (
     <div className="homepage">
       <div className="content">
-        <h1> TEMP APP NAME </h1>
+        <h1> LEARN.LY </h1>
         <div className="subcontent">
           <h2> The newest platform for education </h2>
           <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since  </p>
@@ -22,9 +22,11 @@ const HomePage = () => {
           </Button>
         </NavLink>
 
-        <Button color='#B6CBFE' size='25px' width='250px'>
-          Learners
-        </Button>
+        <NavLink activeClassName="selected" to="/lbegin">
+          <Button color='#B6CBFE' size='25px' width='250px'>
+            Learners
+          </Button>
+        </NavLink>
         <div className="floatingPerson">
           <img src={floating} alt="floating"/>
         </div>
