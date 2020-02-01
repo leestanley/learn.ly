@@ -1,9 +1,11 @@
 import React from 'react';
 
-const HomePage = () => {
+import HomePage from '../components/HomePage';
+
+const HomePageContainer = () => {
   return (
-    <h1>hello</h1>
+    <HomePage />
   );
 };
 
-export default HomePage;
+export default HomePageContainer;
