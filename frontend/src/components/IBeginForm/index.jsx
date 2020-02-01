@@ -2,6 +2,7 @@ import React from 'react';
 
 import Button from '../Button';
 import { Form, Input, Radio } from 'antd';
+import { NavLink } from 'react-router-dom';
 
 import './style.less';
 
@@ -34,9 +35,9 @@ const IBeginForm = (props) => {
              </Radio.Group>
            </div>
           </Form.Item>
-          <Button className="button" color='#B6CBFE' size='20px' width='120px' htmlType="submit">
-            Submit
-          </Button>
+            <Button className="button" color='#B6CBFE' size='20px' width='120px' htmlType="submit">
+              Submit
+            </Button>
       </form>
     </div>
   );
