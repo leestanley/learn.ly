@@ -10,7 +10,6 @@ const LBeginForm = (props) => {
   return (
     <div className="LBeginForm">
         <h3> View a cast </h3>
-        <Col span={8} /> Something </h3>
          <Form.Item>
            <div>
              <Radio.Group className="radio"
@@ -26,7 +25,6 @@ const LBeginForm = (props) => {
             <Button className="button" color='#B6CBFE' size='20px' width='120px' htmlType="submit">
               Submit
             </Button>
-      </form>
   </div>
 );
 };
