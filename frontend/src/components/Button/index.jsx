@@ -10,15 +10,17 @@ const CustomButton = (props) => {
     'background': props.color,
     'font-size': props.size,
     'padding': `8px 0`,
-    'width': props.width
+    'width': props.width,
+    'color': 'white !important'
   }
 
   return (
      <Button
        className="button"
        type="primary"
-       onClick={props.onSubmit}
+       onClick={props.onClick}
        style={style}
+       htmlType={props.htmlType}
        >
        {props.children}
      </Button>

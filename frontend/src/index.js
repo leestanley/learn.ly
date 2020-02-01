@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import configureStore, { history } from './store';
 
 import HomePage from './containers/HomePage';
+import InstructorBegin from './containers/InstructorBegin';
 import InstructorPage from './containers/InstructorPage';
 
 const store = configureStore();
@@ -18,6 +19,7 @@ const App = () => {
       <ConnectedRouter history={history}>
         <>
           <Switch>
+            <Route exact path="/ibegin" component={InstructorBegin} />
             <Route exact path="/instructor" component={InstructorPage} />
             <Route path="/" component={HomePage} />
           </Switch>
