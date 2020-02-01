@@ -4,10 +4,12 @@ const initialState = {
   playbackIds: [],
   streamKeys: [],
   currStream: {
+    id: '',
     streamKey: '',
     playbackId: '',
     title: '',
-    language: ''
+    language: '',
+    status: 'idle'
   },
   error: false
 };
@@ -20,10 +22,12 @@ const StreamReducer = (state = initialState, action) => {
         playbackIds: [action.payload.playbackIds],
         streamKeys: [action.payload.streamKey],
         currStream: {
+          id: action.payload.id,
           streamKey: action.payload.streamKey,
           playbackId: action.payload.playbackId,
           title: action.title,
-          language: action.language
+          language: action.language,
+          status: action.status
         },
         error: action.error
       };
