@@ -1,8 +1,12 @@
 import React from 'react';
 
+import Button from '../components/Button';
+
 const HomePage = () => {
   return (
-    <h1>hello</h1>
+    <Button color='#B6CBFE' size='40px' width='300px'>
+      Hello
+    </Button>
   );
 };
 
