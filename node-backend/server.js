@@ -4,9 +4,11 @@ const basicAuth = require('basic-auth');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const cors = require('cors');
 
 global.config = require('./config');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -88,6 +90,31 @@ const publicStreamDetails = stream => ({
   recentAssets: stream['recent_asset_ids'],
 })
 
+app.get('/createstream', async(req, res) => {
+  initialize().then((stream) => {
+    console.log(stream['playback_ids'][0].id);
+    console.log(`Stream Key: ${stream.stream_key}`);
+    res.json({
+      playbackId: stream['playback_ids'][0].id,
+      streamKey: stream['playback_ids'][0].id
+    })
+  });
+});
+
+// Starts the HTTP listener for our application.
+// Note: glitch helpfully remaps HTTP 80 and 443 to process.env.PORT
+/*
+initialize().then((stream) => {
+  const listener = http.listen(process.env.PORT || 4000, function() {
+    console.log('Your app is listening on port ' + listener.address().port);
+    console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
+    console.log(stream['playback_ids'][0].id);
+    console.log(`Stream Key: ${stream.stream_key}`);
+  });
+});
+}*/
+
+
 // API for getting the current live stream and its state for bootstrapping the app
 app.get('/stream', async (req, res) => {
   const stream = await Video.LiveStreams.get(STREAM.id);
@@ -145,13 +172,4 @@ app.post('/mux-hook', auth, function (req, res) {
   res.status(200).send('Thanks, Mux!');
 });
 
-// Starts the HTTP listener for our application.
-// Note: glitch helpfully remaps HTTP 80 and 443 to process.env.PORT
-initialize().then((stream) => {
-  const listener = http.listen(process.env.PORT || 4000, function() {
-    console.log('Your app is listening on port ' + listener.address().port);
-    console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
-    console.log(stream['playback_ids'][0].id);
-    console.log(`Stream Key: ${stream.stream_key}`);
-  });
-});
+http.listen(process.env.PORT || 4000);

@@ -1,0 +1,1 @@
+export const CREATE_STREAM = 'CREATE_STREAM';
