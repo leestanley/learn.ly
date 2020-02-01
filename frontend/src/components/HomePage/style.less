@@ -1,0 +1,88 @@
+.homepage {
+  font-family: 'Open Sans';
+  background-image: url(../../assets/background.svg),
+  linear-gradient(142.72deg, #FCE593 1.97%, rgba(242, 190, 160, 0.74) 74.06%);
+  min-height: 100vh;
+  background-repeat: no-repeat,
+    no-repeat,
+    no-repeat;
+  background-position: bottom right,
+      left,
+      right;
+  background-size: cover;
+
+  .content {
+    font-style: normal;
+    padding-top: 12vh;
+    padding-left: 4vw;
+
+    * {
+      color: #FFFFFF;
+    }
+
+    h1 {
+      font-weight: 800;
+      font-size: 4rem;
+      line-height: 100px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .subcontent {
+      padding-left: 2vw;
+      max-width: 30vw;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .button {
+      margin-top: 10px;
+      margin-right: 2vw;
+      margin-left: 1vw;
+    }
+
+    .floatingPerson {
+      position: absolute;
+      right: 5vw;
+      top: 20vh;
+
+      img {
+        width: 28vw;
+        height: 28vw;
+      }
+      animation: bounce 1.5s infinite alternate;
+      -webkit-animation: bounce 1.5s infinite alternate;
+    }
+  }
+  .footer {
+    position: absolute;
+    bottom: 2vh;
+    right: 2vw;
+    font-size: 1.4rem;
+    color: #CAA0A0;
+  }
+
+  @keyframes bounce {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-30px);
+    }
+  }
+  @-webkit-keyframes bounce {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-30px);
+    }
+  }
+}

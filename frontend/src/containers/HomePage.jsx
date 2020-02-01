@@ -1,13 +1,11 @@
 import React from 'react';
 
-import Button from '../components/Button';
+import HomePage from '../components/HomePage';
 
-const HomePage = () => {
+const HomePageContainer = () => {
   return (
-    <Button color='#B6CBFE' size='40px' width='300px'>
-      Hello
-    </Button>
+    <HomePage />
   );
 };
 
-export default HomePage;
+export default HomePageContainer;

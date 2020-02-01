@@ -9,6 +9,7 @@ const CustomButton = (props) => {
   const style = {
     'background': props.color,
     'font-size': props.size,
+    'padding': `8px 0`,
     'width': props.width
   }
 
