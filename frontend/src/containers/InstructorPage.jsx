@@ -1,8 +1,14 @@
 import React from 'react';
 
+import VideoPlayer from '../components/VideoPlayer';
+
 const InstructorPage = () => {
   return (
-    <h1>instructor</h1>
+    <VideoPlayer
+      muted={true}
+      playbackId={''}
+      status={'ready'}
+      />
   );
 };
 

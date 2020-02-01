@@ -151,6 +151,7 @@ initialize().then((stream) => {
   const listener = http.listen(process.env.PORT || 4000, function() {
     console.log('Your app is listening on port ' + listener.address().port);
     console.log('HERE ARE YOUR STREAM DETAILS, KEEP THEM SECRET!');
+    console.log(stream['playback_ids'][0].id);
     console.log(`Stream Key: ${stream.stream_key}`);
   });
 });
