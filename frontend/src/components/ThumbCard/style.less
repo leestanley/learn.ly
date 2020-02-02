@@ -1,0 +1,28 @@
+.thumbcard {
+  color: #333;
+  width: 350px;
+  height: 250px;
+  border-radius: 20px;
+  box-shadow: 0 0 5px #b6cbfe;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+
+  .ant-card {
+    line-height: 1.5 !important;
+  }
+
+  &:hover {
+    box-shadow: 0px 5px 20px #b6cbfe;
+    transform: translateY(-7px);
+  }
+
+  img {
+    border-radius: 20px 20px 0px 0px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  p {
+    margin-left: 20px;
+  }
+
+}

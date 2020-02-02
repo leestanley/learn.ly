@@ -7,3 +7,5 @@ export const OPEN_QUIZ = 'OPEN_QUIZ';
 export const CLOSE_ANSWER = 'CLOSE_ANSWER';
 export const UPDATE_QUESTION = 'UPDATE_QUESTION';
 export const ANSWER_QUESTION = 'ANSWER_QUESTION';
+
+export const UPDATE_VIDEOS = 'UPDATE_VIDEOS';
