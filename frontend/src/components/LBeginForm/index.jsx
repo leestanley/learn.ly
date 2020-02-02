@@ -14,12 +14,12 @@ const LBeginForm = (props) => {
     <div className="LBeginForm">
       <form onSubmit={props.handleSubmit} className="login-form">
         <h3> View a cast </h3>
-        <Row>
+        <Row gutter={[12]}>
           <Col span={12}>
             <img src={temp}/>
           </Col>
           <Col span={12}>
-            <img src={temp} align="right"/>
+            <img src={temp}/>
           </Col>
         </Row>
         <h2></h2>
