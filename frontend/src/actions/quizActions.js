@@ -10,6 +10,12 @@ export const createQuizQuestion = (values) => async dispatch => {
     try {
       console.log(values);
       db.collection("quiz").doc('current').set({
+        question: values.question,
+        one: values.one,
+        two: values.two,
+        three: values.three,
+        four: values.four,
+        answer: values.answer
       });
       dispatch({
         type: CREATE_QUIZ,
