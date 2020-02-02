@@ -1,7 +1,7 @@
 import React from 'react';
 
 import StudentVideo from '../../containers/StudentVideo';
-import Sidebar from '../../components/Sidebar';
+import AnswerModal from '../../containers/AnswerModal.jsx'
 
 import './style.less';
 
@@ -12,6 +12,7 @@ const StudentPage = props => {
       <div className="columned">
         <h1> TEMP APP NAME </h1>
         <StudentVideo currStream={props.currStream} />
+        <AnswerModal />
       </div>
     </div>
   );
