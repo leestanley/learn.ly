@@ -13,8 +13,8 @@ const HomePage = () => {
       <div className="content">
         <h1> LEARN.LY </h1>
         <div className="subcontent">
-          <h2> The newest platform for education </h2>
-          <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since  </p>
+          <h2> An education platform for learning globally  </h2>
+          <p> A real-timetranslator, applicative game engine, and insturment for education equity whether you are an educator or learner  </p>
         </div>
         <NavLink activeClassName="selected" to="/ibegin">
           <Button color='#B6CBFE' size='25px' width='250px'>

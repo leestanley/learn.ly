@@ -7,7 +7,7 @@ import IBeginForm from '../../containers/IBeginForm';
 const InstructorBegin = () => {
   return (
     <div className="ibegin">
-      <h1> TEMP APP NAME </h1>
+      <h1> LEARN.LY </h1>
       <div className="form">
         <IBeginForm />
       </div>
