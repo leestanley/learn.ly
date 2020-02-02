@@ -4,6 +4,7 @@ import Hls from 'hls.js';
 
 import omit from 'lodash/omit'
 import getPosterSrc from '../../utils/getPosterSrc';
+import './style.less';
 
 import Brb from '../../assets/brb.jpg';
 
@@ -191,7 +192,7 @@ class VideoPlayer extends Component {
         <div className={this.props.className} style={this.props.style}>
           <div className="SanityMuxPlayerInfoContainer">
             {/* Please connect with a live streaming software using the code provided! */}
-            <img src={Brb} height="440" alt="omo" />
+            <img src={Brb} alt="omo" />
           </div>
         </div>
       )
