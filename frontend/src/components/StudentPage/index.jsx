@@ -14,6 +14,12 @@ const StudentPage = props => {
         <StudentVideo currStream={props.currStream} />
         <AnswerModal />
       </div>
+      <div className="footer">
+        Made with ☕ at HackSC 20
+      </div>
+      <div className="footer2">
+        <b>Learn.ly</b> Student View
+      </div>
     </div>
   );
 };
