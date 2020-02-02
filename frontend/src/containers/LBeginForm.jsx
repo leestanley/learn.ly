@@ -12,7 +12,6 @@ mapPropsToValues() {
   };
 },
 handleSubmit(values, { resetForm,  props }) {
-  props.createLiveStream(values);
 },
 })(LBeginForm);
 

@@ -206,8 +206,8 @@ class VideoPlayer extends Component {
     const videoProps = omit(this.props, handledPropNames)
 
     return (
-      <div className={this.props.className} style={this.props.style}>
-        <div ref={this.videoContainer}>
+      <div className="video-player">
+        <div className="video-player" ref={this.videoContainer}>
           <video
             style={{display: 'block'}}
             onClick={this.handleVideoClick}
