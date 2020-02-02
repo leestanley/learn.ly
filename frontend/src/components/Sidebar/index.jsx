@@ -13,6 +13,7 @@ import ReplayIcon from '../../assets/replay_icon.svg';
 import QuizModal from '../../containers/QuizModal';
 
 import { openQuiz, getQuestion2 } from '../../actions/quizActions';
+import { getVideos } from '../../actions/videoActions';
 
 import IconButton from '../../components/IconButton';
 import StatsCard from '../../components/StatsCard';
@@ -21,6 +22,7 @@ const Sidebar = props => {
 
   useEffect(() => {
     // Update the document title using the browser API
+    props.getVideos();
     props.getQuestion2();
   });
 
@@ -91,4 +93,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps, { openQuiz, getQuestion2 })(Sidebar);
+export default connect(mapStateToProps, { getVideos, openQuiz, getQuestion2 })(Sidebar);
