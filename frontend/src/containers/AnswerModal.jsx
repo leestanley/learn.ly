@@ -15,7 +15,7 @@ const AnswerModalContainer = props => {
       visible={props.visible}
       handleOk={hideMessage}
       handleCancel={hideMessage}
-      question={props.question}
+      question={props}
     />
   );
 };

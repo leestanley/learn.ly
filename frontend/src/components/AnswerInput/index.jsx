@@ -21,23 +21,23 @@ const AnswerInputContainer = props => {
   return (
     <form onSubmit={props.handleSubmit} className="answer-form">
       <h2> Quiz </h2>
-      <h3> {props.question.q} </h3>
+      <h3> {props.question} </h3>
       <Radio.Group
         className="radio"
         name="answer"
         onChange={answer=> {props.setFieldValue('answer', answer.target.value)}}
         >
           <Radio style={radioStyle} value="one">
-            {props.question.one}
+            {props.one}
           </Radio>
           <Radio style={radioStyle} value="two">
-            {props.question.two}
+            {props.two}
           </Radio>
           <Radio style={radioStyle} value="three">
-            {props.question.three}
+            {props.three}
           </Radio>
           <Radio style={radioStyle} value="four">
-            {props.question.four}
+            {props.four}
           </Radio>
       </Radio.Group>
       <Button className="button" color='#B6CBFE' size='20px' width='120px' htmlType="submit">
@@ -48,7 +48,11 @@ const AnswerInputContainer = props => {
 };
 
 const mapStateToProps = state => ({
-  question: state.quiz.question
+  question: state.quiz.q,
+  one: state.quiz.one,
+  two: state.quiz.two,
+  three: state.quiz.three,
+  four: state.quiz.four,
 });
 
 export default connect(

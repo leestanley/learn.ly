@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import './style.less';
@@ -12,12 +12,18 @@ import QuizIcon from '../../assets/quiz_icon.svg';
 import ReplayIcon from '../../assets/replay_icon.svg';
 import QuizModal from '../../containers/QuizModal';
 
-import { openQuiz } from '../../actions/quizActions';
+import { openQuiz, getQuestion2 } from '../../actions/quizActions';
 
 import IconButton from '../../components/IconButton';
 import StatsCard from '../../components/StatsCard';
 
 const Sidebar = props => {
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    props.getQuestion2();
+  });
+
   const showMessage = () => {
     props.openQuiz();
   };
@@ -64,8 +70,8 @@ const Sidebar = props => {
           <StatsCard number={203} varname={'Followers'} />
         </div>
         <div className="Buttons">
-          <StatsCard number={300} varname={'Uptime'} />
-          <StatsCard number={23} varname={'Donations'} />
+          <StatsCard number={props.right} varname={'Right'} />
+          <StatsCard number={props.wrong} varname={'Wrong'} />
         </div>
         <div className="streamkey">
           <p>Reveal Your Streamkey ID: </p>
@@ -78,4 +84,11 @@ const Sidebar = props => {
   );
 };
 
-export default connect(null, { openQuiz })(Sidebar);
+const mapStateToProps = (state) => {
+  return {
+    right: state.quiz.right,
+    wrong: state.quiz.wrong
+  }
+};
+
+export default connect(mapStateToProps, { openQuiz, getQuestion2 })(Sidebar);

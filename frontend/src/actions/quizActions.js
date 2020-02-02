@@ -91,6 +91,47 @@ export const getQuestion = () => async dispatch => {
   });
 }
 
+export const getQuestion2 = () => async dispatch => {
+  return new Promise( async (resolve, reject) => {
+    db.collection("quiz").doc('current').get().then(function(doc) {
+        if (doc.exists) {
+            const data = doc.data();
+            dispatch({
+              type: UPDATE_QUESTION,
+              q: data.question,
+              one: data.one,
+              two: data.two,
+              three: data.three,
+              four: data.four,
+              answer: data.answer,
+              right: data.right,
+              wrong: data.wrong
+            });
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+
+    db.collection("quiz").doc('current').onSnapshot((docSnapshot) => {
+      const data = docSnapshot.data();
+      dispatch({
+        type: UPDATE_QUESTION,
+        q: data.question,
+        one: data.one,
+        two: data.two,
+        three: data.three,
+        four: data.four,
+        answer: data.answer,
+        right: data.right,
+        wrong: data.wrong
+      });
+    }, (err) => console.error('Error in onSnapshot', err));
+  });
+}
+
 export const closeAnswer = () => async dispatch => {
   return new Promise( async (resolve, reject) => {
     dispatch({
@@ -105,6 +146,7 @@ export const sendAnswer = (values) => async dispatch => {
         if (doc.exists) {
             const data = doc.data();
             if(values.answer === data.answer) {
+              console.log(data.right);
               db.collection("quiz").doc('current').set({
                 question: data.question,
                 one: data.one,
@@ -124,7 +166,8 @@ export const sendAnswer = (values) => async dispatch => {
                 three: data.three,
                 four: data.four,
                 answer: data.answer,
-                right: data.right + 1,
+                right: data.right,
+                wrong: data.wrong
               });
             } else {
               db.collection("quiz").doc('current').set({
@@ -147,7 +190,7 @@ export const sendAnswer = (values) => async dispatch => {
                 four: data.four,
                 answer: data.answer,
                 right: data.right,
-                wrong: data.wrong + 1
+                wrong: data.wrong
               });
             }
         }
