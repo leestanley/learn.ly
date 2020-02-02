@@ -187,7 +187,6 @@ class VideoPlayer extends Component {
     if (isLoading) {
       return (
         <div className={this.props.className} style={this.props.style}>
-          //TODO: MAKE FANCIER
           <div className="SanityMuxPlayerInfoContainer">
             Please connect with a live streaming software using the code provided!
           </div>

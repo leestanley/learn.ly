@@ -7,7 +7,7 @@ import React from 'react';
   status={'ready'}
   />*/
 import InstructorVideo from '../../containers/InstructorVideo';
-import Sidebar from '../../components/Sidebar';
+import Sidebar from '../Sidebar';
 
 import './style.less';
 
