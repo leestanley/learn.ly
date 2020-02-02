@@ -13,7 +13,7 @@ import './style.less';
 const InstructorPage = (props) => {
   return (
     <div className="instructor-page">
-      <h1> TEMP APP NAME </h1>
+      <h1> LEARN.LY </h1>
       <InstructorVideo currStream={props.currStream}/>
       <h1>Your stream key is {props.currStream.streamKey}</h1>
     </div>
