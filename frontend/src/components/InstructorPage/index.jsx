@@ -7,6 +7,7 @@ import React from 'react';
   status={'ready'}
   />*/
 import InstructorVideo from '../../containers/InstructorVideo';
+import QuizModal from '../../containers/QuizModal';
 
 import './style.less';
 
@@ -16,6 +17,7 @@ const InstructorPage = (props) => {
       <h1> TEMP APP NAME </h1>
       <InstructorVideo currStream={props.currStream}/>
       <h1>Your stream key is {props.currStream.streamKey}</h1>
+      <QuizModal />
     </div>
   );
 };
