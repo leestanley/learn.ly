@@ -14,6 +14,28 @@ const ReplayPage = props => {
     document.title = `Viewing Replays`;
   }, []);
 
+  const getThumbcards = (videos) => {
+    let returnedVideos = [];
+    if(videos && videos.videos) {
+    for (let i = 0; i < 6 ; i++) {
+      const currVid = videos.videos[i];
+      console.log(currVid);
+      const playbackId = currVid.playback_ids[0].id;
+      returnedVideos.push(
+        <a href={`https://stream.mux.com/${playbackId}`}>
+        <ThumbCard
+          key={`thumbcard ${i}`}
+          image={`https://image.mux.com/${playbackId}/thumbnail.png`}
+          text1={`Video ${i + 1}`}
+          text2={`${currVid.duration} s`}
+        />
+        </a>
+      )
+      }
+    }
+    return returnedVideos;
+  }
+
   return (
     <div className="replay-page">
       <div className="wrapper">
@@ -24,36 +46,7 @@ const ReplayPage = props => {
           </NavLink>
         </div>
         <div className="counters">
-          <ThumbCard
-            image={'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'}
-            text1="【=◈︿◈=】"
-            text2="【=◈︿◈=】"
-          />
-          <ThumbCard
-            image={'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'}
-            text1="【=◈︿◈=】"
-            text2="【=◈︿◈=】"
-          />
-          <ThumbCard
-            image={'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'}
-            text1="【=◈︿◈=】"
-            text2="【=◈︿◈=】"
-          />
-          <ThumbCard
-            image={'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'}
-            text1="【=◈︿◈=】"
-            text2="【=◈︿◈=】"
-          />
-          <ThumbCard
-            image={'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'}
-            text1="【=◈︿◈=】"
-            text2="【=◈︿◈=】"
-          />
-          <ThumbCard
-            image={'https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png'}
-            text1="【=◈︿◈=】"
-            text2="【=◈︿◈=】"
-          />
+          {getThumbcards(props.videos)}
         </div>
       </div>
       <div className="footer">Made with ☕ at HackSC 20</div>

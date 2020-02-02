@@ -10,7 +10,7 @@ const StudentPage = props => {
   return (
     <div className="student-page">
       <div className="columned">
-        <h1> TEMP APP NAME </h1>
+        <h1> LEARN.LY </h1>
         <StudentVideo currStream={props.currStream} />
         <AnswerModal />
       </div>

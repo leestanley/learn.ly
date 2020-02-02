@@ -36,9 +36,11 @@ const LBeginForm = (props) => {
              </Radio.Group>
            </div>
           </Form.Item>
+          <NavLink to="/student">
             <Button className="button" color='#B6CBFE' size='20px' width='120px' htmlType="submit">
               Submit
             </Button>
+          </NavLink>
       </form>
   </div>
 );
