@@ -73,6 +73,7 @@ export const getQuestion = () => async dispatch => {
     });
 
     db.collection("quiz").doc('current').onSnapshot((docSnapshot) => {
+            console.log('hi matteo2');
       const data = docSnapshot.data();
       if(data.right === 0 && data.wrong === 0 ) {
         dispatch({
@@ -116,6 +117,7 @@ export const getQuestion2 = () => async dispatch => {
     });
 
     db.collection("quiz").doc('current').onSnapshot((docSnapshot) => {
+            console.log('hi matteo');
       const data = docSnapshot.data();
       dispatch({
         type: UPDATE_QUESTION,
