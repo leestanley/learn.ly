@@ -12,6 +12,8 @@ export const getVideos = (values) => async dispatch => {
       },
     });
     const data = await response.json();
+    console.log(data);
+    console.log('huh')
     dispatch({
       type: UPDATE_VIDEOS,
       payload: data
