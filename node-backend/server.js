@@ -5,6 +5,21 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const cors = require('cors');
+const admin = require('firebase-admin');
+
+let serviceAccount = require('./servicekey.json');
+
+try {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+  });
+} catch (err) {
+  // we skip the "already exists" message which is
+  // not an actual error when we're hot-reloading
+  if (!/already exists/.test(err.message)) {
+    console.error('Firebase initialization error', err.stack)
+  }
+}
 
 global.config = require('./config');
 
@@ -92,12 +107,25 @@ const publicStreamDetails = stream => ({
 
 app.get('/createstream', async(req, res) => {
   initialize().then((stream) => {
-    console.log(stream['playback_ids'][0].id);
-    console.log(`Stream Key: ${stream.stream_key}`);
+    console.log(stream);
     res.json({
+      id: stream.id,
       playbackId: stream['playback_ids'][0].id,
-      streamKey: stream['playback_ids'][0].id
+      streamKey: stream.stream_key
     })
+  });
+});
+
+app.post('/webhook', async(req, res) => {
+  console.log(req.body);
+  res.send('hello');
+
+  let db = admin.firestore();
+
+  let docRef = db.collection('streams').doc('current');
+
+  let setAda = docRef.update({
+    status: req.body.data.status
   });
 });
 

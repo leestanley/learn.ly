@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import VideoTool from '../components/VideoTool';
+import StudentVideoTool from '../components/StudentVideoTool';
 import VideoPlayer from '../components/VideoPlayer';
 import { getCurrentStream } from '../actions/streamActions.js';
 
-const InstructorVideoContainer = props => {
+const StudentVideoContainer = props => {
 
   useEffect(() => {
     props.getCurrentStream();
   }, []);
 
   return (
-    <VideoTool
+    <StudentVideoTool
       title={props.currStream.title}
       translation={'transcription'}
       >
@@ -21,7 +21,7 @@ const InstructorVideoContainer = props => {
         playbackId={props.currStream.playbackId}
         status={props.currStream.status}
         />
-    </VideoTool>
+    </StudentVideoTool>
   );
 };
 
@@ -32,4 +32,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getCurrentStream }
-)(InstructorVideoContainer);
+)(StudentVideoContainer);

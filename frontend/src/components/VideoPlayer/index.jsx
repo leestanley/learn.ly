@@ -70,7 +70,7 @@ class VideoPlayer extends Component {
     if (status === 'preparing') {
       isLoading = 'MUX is processing the video'
     }
-    if (status === 'ready') {
+    if (status === 'ready' || status === 'active') {
       isLoading = false
     }
     if (playbackId) {
@@ -129,7 +129,9 @@ class VideoPlayer extends Component {
       this.hls.on(Hls.Events.ERROR, (event, data) => {
         switch (data.type) {
           case Hls.ErrorTypes.NETWORK_ERROR:
-            this.videoContainer.current.style.display = 'none'
+            if(this.videoContainer.current) {
+              this.videoContainer.current.style.display = 'none'
+            }
             this.setState({error: data})
             break
           case Hls.ErrorTypes.MEDIA_ERROR:
@@ -185,8 +187,9 @@ class VideoPlayer extends Component {
     if (isLoading) {
       return (
         <div className={this.props.className} style={this.props.style}>
+          //TODO: MAKE FANCIER
           <div className="SanityMuxPlayerInfoContainer">
-            Waiting for MUX to complete the file...
+            Please connect with a live streaming software using the code provided!
           </div>
         </div>
       )
@@ -213,12 +216,6 @@ class VideoPlayer extends Component {
             {...videoProps}
           />
         </div>
-        {error && (
-          <div>
-            There was an error loading this video ({error.type}).
-          </div>
-        )}
-        { children }
       </div>
     )
   }
