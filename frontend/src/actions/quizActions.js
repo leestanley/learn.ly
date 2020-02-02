@@ -1,5 +1,5 @@
 import Config from '../config';
-import { CREATE_QUIZ, CLOSE_QUIZ } from './types';
+import { CREATE_QUIZ, CLOSE_QUIZ, OPEN_QUIZ } from './types';
 import { replace } from 'connected-react-router';
 
 import firebase from '../utils/firebase';
@@ -29,6 +29,14 @@ export const closeQuiz = () => async dispatch => {
   return new Promise( async (resolve, reject) => {
     dispatch({
       type: CLOSE_QUIZ
+    })
+  });
+}
+
+export const openQuiz = () => async dispatch => {
+  return new Promise( async (resolve, reject) => {
+    dispatch({
+      type: OPEN_QUIZ
     })
   });
 }

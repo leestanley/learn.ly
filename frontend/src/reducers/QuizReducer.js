@@ -1,7 +1,7 @@
-import { CREATE_QUIZ , CLOSE_QUIZ} from '../actions/types';
+import { CREATE_QUIZ , CLOSE_QUIZ, OPEN_QUIZ} from '../actions/types';
 
 const initialState = {
-  instructorVisible: true,
+  instructorVisible: false,
 };
 
 const QuizReducer = (state = initialState, action) => {
@@ -14,6 +14,11 @@ const QuizReducer = (state = initialState, action) => {
       return {
         ...state,
         instructorVisible: false
+      };
+    case OPEN_QUIZ:
+      return {
+        ...state,
+        instructorVisible: true
       };
     default:
       return state;
