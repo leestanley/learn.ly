@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import './style.less';
 
@@ -19,7 +20,6 @@ import IconButton from '../../components/IconButton';
 import StatsCard from '../../components/StatsCard';
 
 const Sidebar = props => {
-
   useEffect(() => {
     // Update the document title using the browser API
     props.getVideos();
@@ -58,10 +58,12 @@ const Sidebar = props => {
             <img src={QuizIcon} alt="icon" height="24" />
             Create Quiz
           </IconButton>
-          <IconButton width="190px">
-            <img src={ReplayIcon} alt="icon" height="26" />
-            View Replays
-          </IconButton>
+          <NavLink to="/replays">
+            <IconButton width="190px">
+              <img src={ReplayIcon} alt="icon" height="26" />
+              View Replays
+            </IconButton>
+          </NavLink>
         </div>
         <div className="blocker">
           <h1>Data Analytics</h1>
@@ -86,11 +88,11 @@ const Sidebar = props => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     right: state.quiz.right,
     wrong: state.quiz.wrong
-  }
+  };
 };
 
 export default connect(mapStateToProps, { getVideos, openQuiz, getQuestion2 })(Sidebar);

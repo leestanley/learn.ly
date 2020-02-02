@@ -10,6 +10,7 @@ import configureStore, { history } from './store';
 import HomePage from './containers/HomePage';
 import InstructorBegin from './containers/InstructorBegin';
 import InstructorPage from './containers/InstructorPage';
+import ReplayPage from './containers/ReplayPage'
 import StudentPage from './containers/StudentPage';
 import LearnerBegin from './containers/LearnerBegin';
 
@@ -25,6 +26,7 @@ const App = () => {
             <Route exact path="/instructor" component={InstructorPage} />
             <Route exact path="/lbegin" component={LearnerBegin} />
             <Route exact path="/student" component={StudentPage} />
+            <Route exact path="/replays" component={ReplayPage} />
             <Route path="/" component={HomePage} />
           </Switch>
         </>
