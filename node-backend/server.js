@@ -30,7 +30,8 @@ app.use(express.static('public'));
 
 // Setup the Mux SDK
 const Mux = require('@mux/mux-node');
-const { Video } = new Mux(config.MUX_TOKEN_ID || process.env.MUX_TOKEN_ID, config.MUX_TOKEN_SECRET || process.env.MUX_TOKEN_SECRET);
+const { Video, Data } = new Mux(config.MUX_TOKEN_ID || process.env.MUX_TOKEN_ID, config.MUX_TOKEN_SECRET || process.env.MUX_TOKEN_SECRET);
+
 let STREAM;
 
 // Storage Configuration
@@ -117,7 +118,6 @@ app.get('/createstream', async(req, res) => {
 });
 
 app.post('/webhook', async(req, res) => {
-  console.log(req.body);
   res.send('hello');
 
   let db = admin.firestore();
@@ -198,6 +198,27 @@ app.post('/mux-hook', auth, function (req, res) {
   }
 
   res.status(200).send('Thanks, Mux!');
+});
+
+// test
+app.get('/data', async (req, res) => {
+  console.log('data')
+  const breakdown = await Data.Metrics.overall('video_quality_score').then(function(value) {
+    console.log('success')
+    console.log(value);
+  }).catch(function(err) {
+    console.error(err);
+  });
+});
+
+app.get('/videos', async (req, res) => {
+  const videos = await Video.Assets.list().then(function(values) {
+    res.json({
+      videos: values
+    });
+  }).catch(function(err) {
+    console.error(err);
+  });
 });
 
 http.listen(process.env.PORT || 4000);

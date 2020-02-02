@@ -14,7 +14,7 @@ const HomePage = () => {
         <h1> LEARN.LY </h1>
         <div className="subcontent">
           <h2> An education platform for learning globally  </h2>
-          <p> A real-timetranslator, applicative game engine, and insturment for education equity whether you are an educator or learner  </p>
+          <p> A real-time translator, applicative knowledge tester, and education equity insturment whether you are an educator or learner </p>
         </div>
         <NavLink activeClassName="selected" to="/ibegin">
           <Button color='#B6CBFE' size='25px' width='250px'>
