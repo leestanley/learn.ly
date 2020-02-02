@@ -16,6 +16,7 @@ import { openQuiz }from '../../actions/quizActions';
 
 
 import IconButton from '../../components/IconButton';
+import StatsCard from '../../components/StatsCard';
 
 const Sidebar = props => {
   const showMessage = () => {
@@ -59,7 +60,16 @@ const Sidebar = props => {
         <h1>Data Analytics</h1>
         <img className="triple" src={Triple} alt="icon" height="40" />
       </div>
-      {/* <p>Your streamkey is {props.streamKey}</p> */}
+      <div className="Buttons">
+        <StatsCard number={300} varname={"Viewers"}/>
+        <StatsCard number={203} varname={"Followers"} />
+      </div>
+      <div className="Buttons">
+        <StatsCard number={300} varname={"Uptime"}/>
+        <StatsCard number={23} varname={"Donations"} />
+      </div>
+      <div></div>
+      <p>Your streamkey is {props.streamKey}</p>
     </div>
     </>
   );
