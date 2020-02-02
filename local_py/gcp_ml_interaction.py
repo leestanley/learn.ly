@@ -99,10 +99,10 @@ def translate_audio(source_path, source_language, dest_language, output_path):
     if text:
         translated_text = translate_text(dest_language.split("-")[0], source_language.split("-")[0], text)
         text_to_audio(translated_text, dest_language, output_path)
-        return True
+        return True, translated_text
     else:
         print("Couldn't transcript")
-        return False
+        return False, ""
 
 
 if __name__ == "__main__":

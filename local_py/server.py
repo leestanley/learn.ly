@@ -9,6 +9,9 @@ import struct
 import sys
 import wave
 import subprocess
+
+from google.cloud import storage
+
 from gcp_ml_interaction import translate_audio
 from requests_toolbelt.multipart import decoder
 from http.server import BaseHTTPRequestHandler, HTTPServer, SimpleHTTPRequestHandler
@@ -21,21 +24,22 @@ class Server(SimpleHTTPRequestHandler):
     new_translation_name = "dsafdsf.wav"
 
     @classmethod
-    def blob_to_wav(cls, blob, file_name):
+    def blob_to_flac(cls, blob, file_name):
         wav_file = f"{file_name}.wav"
         flac_file = f"{file_name}.flac"
+        if os.path.exists(cls.old_translation_name + '.flac'):
+            os.remove(cls.old_translation_name + '.flac')
         if os.path.exists(wav_file):
             os.remove(wav_file)
         if os.path.exists(flac_file):
             os.remove(flac_file)
-        if os.path.exists(cls.old_translation_name):
-            os.remove(cls.old_translation_name)
 
         with open(wav_file, mode='bx') as f:
             f.write(blob)
 
         cmd = f"ffmpeg -i {wav_file} {flac_file}"
         subprocess.call(cmd, shell=True)
+        os.remove(wav_file)
         return flac_file
 
     def end_headers(self):
@@ -49,13 +53,12 @@ class Server(SimpleHTTPRequestHandler):
         Server.new_translation_name = ''.join(random.choice(string.ascii_lowercase) for _ in range(10))
         parameters = dict(parse_qsl(self.path))
         print(parameters)
-        wav_path = self.blob_to_wav(blob, "source")
-        if not translate_audio(wav_path, parameters["src_language"], parameters["dst_language"],
-                               Server.new_translation_name):
-            shutil.copy(wav_path, Server.new_translation_name)
+        flac_path = self.blob_to_flac(blob, Server.new_translation_name)
+        result, text = translate_audio(flac_path, parameters["src_language"], parameters["dst_language"],
+                                       flac_path)
 
         self._set_headers(200, content="text")
-        self.wfile.write(Server.new_translation_name.encode("utf-8"))
+        self.wfile.write(f"{Server.new_translation_name}.flac\n{text}".encode("utf-8"))
 
     def _set_headers(self, response, content="text/xml", length=None):
         self.send_response(response)
