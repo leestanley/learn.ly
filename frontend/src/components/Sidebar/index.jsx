@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './style.less';
 
@@ -9,12 +10,21 @@ import PlayCircle from '../../assets/play_circle.svg';
 import PauseCircle from '../../assets/pause_circle.svg';
 import QuizIcon from '../../assets/quiz_icon.svg';
 import ReplayIcon from '../../assets/replay_icon.svg';
+import QuizModal from '../../containers/QuizModal';
+
+import { openQuiz }from '../../actions/quizActions';
 
 
 import IconButton from '../../components/IconButton';
 
 const Sidebar = props => {
+  const showMessage = () => {
+    props.openQuiz();
+  }
+
   return (
+    <>
+    <QuizModal />
     <div className="sidebar">
       <div className="admin">
         <h1>ADMIN PANEL</h1>
@@ -36,7 +46,7 @@ const Sidebar = props => {
         </IconButton>
       </div>
       <div className="ButtonsBot">
-        <IconButton width="190px">
+        <IconButton width="190px" onClick={showMessage}>
           <img src={QuizIcon} alt="icon" height="24" />
           Create Quiz
         </IconButton>
@@ -51,7 +61,11 @@ const Sidebar = props => {
       </div>
       {/* <p>Your streamkey is {props.streamKey}</p> */}
     </div>
+    </>
   );
 };
 
-export default Sidebar;
+export default connect(
+null,
+{ openQuiz }
+)(Sidebar);
