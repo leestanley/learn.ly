@@ -2,7 +2,7 @@ import { CREATE_QUIZ , CLOSE_QUIZ, OPEN_QUIZ, CLOSE_ANSWER, UPDATE_QUESTION, ANS
 
 const initialState = {
   instructorVisible: false,
-  studentVisible: false,
+  studentVisible: true,
   q: '',
   one: '',
   two: '',
