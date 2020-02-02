@@ -1,6 +1,8 @@
 .student-page {
   font-family: 'Open Sans';
-  background: #B6CBFE;
+  background: url(../../assets/ibeginbackground.svg) bottom, #B6CBFE;
+  background-size: contain;
+  background-repeat: no-repeat;
   height: 100vh;
   width: 100%;
   display: flex;
@@ -12,7 +14,27 @@
     color: white;
     font-weight: 800;
     font-size: 4rem;
-    line-height: 100px;
-    padding-top: 4vh;
+    line-height: 80px;
+    // padding-top: 0vh;
+  }
+
+  h2 {
+    font-weight: 700;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 2vh;
+    right: 2vw;
+    font-size: 1.2rem;
+    color: #FFF;
+  }
+
+  .footer2 {
+    position: absolute;
+    bottom: 2vh;
+    left: 2vw;
+    font-size: 1.2rem;
+    color: #FFF;
   }
 }
