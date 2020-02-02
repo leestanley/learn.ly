@@ -45,7 +45,7 @@ const Sidebar = props => {
         </div>
         <div className="Buttons">
           <IconButton width="190px">
-            <img src={PlayCircle} alt="icon" height="28" />
+            <img src={PlayCircle} alt="icon" height="28" onClick={props.startStream}/>
             Begin Cast
           </IconButton>
           <IconButton width="190px">

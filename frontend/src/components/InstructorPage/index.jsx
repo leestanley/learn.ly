@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { startStream } from './script.js';
+
 //import VideoPlayer from '../VideoPlayer';
 /*<VideoPlayer
   muted={true}
@@ -16,11 +18,13 @@ const InstructorPage = props => {
   return (
     <div className="instructor-page">
       <h1 className="logo">LEARN.LY</h1>
+      <video id="player"></video>
+      <audio id="audio"></audio>
       <div className="columned">
         <InstructorVideo currStream={props.currStream} />
       </div>
       <div className="sidebar">
-        <Sidebar streamKey={streamKey} />
+        <Sidebar startStream={startStream} streamKey={streamKey} />
       </div>
       <div className="footer">
         Made with ☕ at HackSC 20
